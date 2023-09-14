@@ -10,7 +10,29 @@ The Books Microservice is a simple REST API built using Go (Golang) and the Gin 
 
 ## Getting Started
 
-### Prerequisites
+## Running the Application with Docker Compose
+
+To run the Books Microservice using Docker Compose, follow these steps:
+
+1. Make sure you have Docker and Docker Compose installed on your system. If not, you can download and install them from [Docker's official website](https://www.docker.com/get-started).
+
+2. Clone this repository to your local machine:
+
+   ```bash
+   git clone https://github.com/your-username/books-microservice.git
+    ```
+3. Change to the project directory:
+
+    ```bash
+    cd books-microservice
+    ```
+4. Build the Docker image for the microservice and start the container:
+
+    ```bash
+    docker-compose up --build
+    ```
+This command will build the Docker image using the specified Go version and start the microservice in a container.
+### Prerequisites For Running on Local
 
 - Go (Golang) should be installed on your system. If not, you can download and install it from [here](https://golang.org/doc/install).
 
