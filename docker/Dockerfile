@@ -1,4 +1,4 @@
-FROM golang:1.21
+FROM golang:1.21.0-alpine3.17
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -14,18 +14,3 @@ EXPOSE 8080
 
 # Command to run the executable
 CMD ["./main"]
-
- 
-
-FROM golang:1.21.0 as builder
-WORKDIR /app
-RUN go mod init book-microservice
-COPY *.go ./
-RUN CGO_ENABLED=0 GOOS=linux go build -o /book-microservice
-
-FROM gcr.io/distroless/base-debian11
-WORKDIR /
-COPY --from=builder /book-microservice /book-microservice
-ENV PORT 8080
-USER nonroot:nonroot
-CMD ["/book-microservice"]
