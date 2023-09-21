@@ -1,25 +1,25 @@
-# FROM golang:1.21
+FROM golang:1.21
 
-# # Set the working directory inside the container
-# WORKDIR /app
+# Set the working directory inside the container
+WORKDIR /app
 
-# # Copy the Go application code into the container
-# COPY . .
+# Copy the Go application code into the container
+COPY . .
 
-# # Build the Go application
-# RUN go build -o main .
+# Build the Go application
+RUN go build -o main .
 
-# # Expose the port the application will run on
-# EXPOSE 8080
+# Expose the port the application will run on
+EXPOSE 8080
 
-# # Command to run the executable
-# CMD ["./main"]
+# Command to run the executable
+CMD ["./main"]
 
  
 
 FROM golang:1.21.0 as builder
 WORKDIR /app
-RUN go mod init github.com/baselrabia/book-microservice
+RUN go mod init book-microservice
 COPY *.go ./
 RUN CGO_ENABLED=0 GOOS=linux go build -o /book-microservice
 
